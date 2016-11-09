@@ -4,15 +4,21 @@ This is a Sensu plugin that allows monitoring and alerting if the latency of
 a Sidekiq queue exceeds a threshold value. It talks directly to Redis, so that
 it doesn't need to authenticate to the Sidekiq web interface.
 
-## Installation
+# Installation
 
 Or install it yourself as:
 
     $ gem install sensu-plugin-sidekiq-latency
 
-## Usage
+# Functionality
 
-TODO: Write usage instructions here
+## check-sidekiq-latency.rb
+Checks the latency for a particular sidekiq queue, and warns if it exceeds thresholds.
+
+- `--url` or `-u` - **required** URL of the Redis instance that Sidekiq is using.
+- `--queue` or `-q` - **required** name of the sidekiq queue to monitor.
+- `--warn` or `-w` - threshold (in seconds) for a warning to be issued.
+- `--crit` or `-c` - threshold (in seconds) for a critical alert to be sent.
 
 ## Development
 
