@@ -13,9 +13,8 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Sensu Plugin to alert on Sidekiq latency of a particular queue}
   spec.homepage      = 'https://github.com/chartmogul/sensu-plugin-sidekiq-latency'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files         = Dir.glob('{bin,lib}/**/*') + %w(README.md)
+  spec.executables   = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'sensu-plugin', '~> 1.2'
