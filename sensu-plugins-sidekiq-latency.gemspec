@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sensu-plugin-sidekiq-latency/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'sensu-plugin-sidekiq-latency'
+  spec.name          = 'sensu-plugins-sidekiq-latency'
   spec.version       = SensuPluginSidekiqLatency::VERSION
   spec.authors       = ['Jason Langenauer']
   spec.email         = ['jason@chartmogul.com']
