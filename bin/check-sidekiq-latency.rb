@@ -59,7 +59,7 @@ class SidekiqLatencyCheck < Sensu::Plugin::Check::CLI
    def run
      begin
        Sidekiq.configure_client do |sidekiq_config|
-        sidekiq_config.redis = { url: config[:url], timeout: 20 }
+        sidekiq_config.redis = { url: config[:redis_url], timeout: 20 } # timeout in seconds
        end
 
        latency = Sidekiq::Queue.new(config[:queue]).latency.to_i
@@ -73,7 +73,7 @@ class SidekiqLatencyCheck < Sensu::Plugin::Check::CLI
        ok "Maximum latency for Sidekiq queue '#{config[:queue]}' is less than #{config[:warn]} seconds"
 
      rescue => error
-        unknown "Could not load Sidekiq stats from #{config[:url]}. Error: #{error}"
+        unknown "Could not load Sidekiq stats from #{config[:redis_url]}. Error: #{error}"
      end
    end
 end
