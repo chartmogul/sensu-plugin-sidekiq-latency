@@ -59,7 +59,7 @@ class SidekiqLatencyCheck < Sensu::Plugin::Check::CLI
    def run
      begin
        Sidekiq.configure_client do |sidekiq_config|
-        sidekiq_config.redis = { url: config[:redis_url], timeout: 20 } # timeout in seconds
+        sidekiq_config.redis = { url: config[:redis_url], timeout: 60 } # timeout in seconds
        end
 
        latency = Sidekiq::Queue.new(config[:queue]).latency.to_i
